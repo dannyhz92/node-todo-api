@@ -5,7 +5,7 @@ const {app} = require("./../server");
 const {Todo} = require("../../models/todo");
 
 beforeEach((done)=>{
-  Todo.remove({}).then(()=>done())
+  Todo.remove({}).then(()=> done())
 });
 
 describe("POST /todos", ()=>{
@@ -27,7 +27,25 @@ describe("POST /todos", ()=>{
           Todo.find().then((todos)=>{
             expect(todos.length).toBe(1);
             expect(todos[0].text).toBe(text);
+            done();
           }).catch((e)=>done(e))
         });
   });
+
+    it("shouldnot create todo with invalid bodydata",(done)=>{
+      request(app)
+      .post("/todos")
+      .send({text:""})
+      .expect(400)
+      .end((err, res)=>{
+        if(err){
+          return done(err)
+        }
+
+        Todo.find().then((todos)=>{
+          expect(todos.length).toBe(0);
+          done();
+        }).catch((e)=>done(e))
+      })
+    });
 });
