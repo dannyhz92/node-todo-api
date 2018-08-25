@@ -33,16 +33,3 @@ app.listen(3000, ()=> {
 
 
 module.exports = {app}
-
-
-// var newUser = new User({
-//   email:"saywhat@gmail.com"
-// });
-//
-// newUser.save().then((doc)=>{
-//   console.log(doc);
-// }, (e)=>{
-//   console.log("Unable to save user")
-// })
-//
-// // save new something
