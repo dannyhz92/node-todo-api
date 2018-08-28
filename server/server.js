@@ -33,26 +33,20 @@ app.get("/todos",(req, res)=> {
 app.get("/todos/:id", (req, res)=>{
     var item;
     var id = req.params.id ;
-    if(ObjectID.isValid(id)){
-       Todo.findOne({
-        _id: id
-      }).then((todo)=>{
-        res.status(200).send(todo.text)
-
-      });
-    } else {
-      res.status(404).send( );
-      console.log("Couldn't fetch todo")
+    if(!ObjectID.isValid(id)){
+       return res.status(404).send();
     }
-    // validated id using isValid
-    // give 404 if todo wasn't found
-    // just call send with no body
 
-    // findById the todo
-    // if todo, send it back
-    // if not
-    // 400 - and send empty body back
-})
+    Todo.findById(id).then((todo)=>{
+      if(!todo){
+        return res.status(404).send();
+      }
+      res.send({todo})
+    }).catch((e)=>{
+      res.status(404).send();
+    });
+
+});
 
 app.listen(3000, ()=> {
   console.log("Started on port 3000")
