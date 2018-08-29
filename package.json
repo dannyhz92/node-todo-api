@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "SET \"NODE_ENV = test \" && mocha server/**/*.test.js --timeout 5000",
-    "test-watch": "nodemon  "
+    "test-watch": "nodemon"
+
+  },
+  "engines": {
+    "node": "10.8.0"
   },
   "author": "",
   "license": "ISC",
