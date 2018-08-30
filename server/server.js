@@ -1,9 +1,13 @@
+require("./config/config")
+
+
+
 const _ = require("lodash");
 var express = require("express");
 var bodyParser = require("body-parser");
 const {ObjectID} = require("mongodb")
 
-
+// require('./config/config');
 var {mongoose} = require("./db/mongoose.js");
 var {Todo} = require("../models/todo");
 var {User} = require("../models/user");
