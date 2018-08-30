@@ -7,7 +7,6 @@
     "start": "node server/server.js",
     "test": "SET \"NODE_ENV = test \" && mocha server/**/*.test.js --timeout 5000",
     "test-watch": "nodemon"
-
   },
   "engines": {
     "node": "10.8.0"
@@ -17,6 +16,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "lodash": "^4.15.0",
     "mongodb": "^2.2.5",
     "mongoose": "^4.5.9"
   },
